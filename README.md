@@ -3,8 +3,10 @@ The MeshCom reflector exchanges messages and information between the individual 
 
 ## MeshCom Network
 
-MeshCom-Server (DL) <------------------->
-MeshCom-Server (OE) <------------------->                                                      -----> MAP
-MeshCom-Server (I) <--------------------> <===> MeshCom-Reflector <==> MeshCom-Dashboards ===> -----> DashBoard
-MeshCom-Server (HB) <------------------->                                                      -----> LOGs
-MeshCom-Server (more) <----------------->
+| Servers | Path | Reflectos | Path | Dashboards |
+| ----- | ----- | ----- | ----- | ----- |
+| MeshCom-Server (DL) | <---------> | | | |
+| MeshCom-Server (OE) | <---------> | | -----> | MAP |
+| MeshCom-Server (I) | <---------> | MeshCom-Reflector | -----> | DashBoard |
+| MeshCom-Server (HB) | <---------> | | -----> | LOGs |
+| MeshCom-Server (more) | <---------> | | | |
