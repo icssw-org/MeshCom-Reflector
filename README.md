@@ -14,4 +14,4 @@ The MeshCom reflector exchanges messages and information between the individual 
 | Servers | Protokoll | Reflectors |
 | ----- | ----- | ----- |
 | MeshCom-Server (...) | --> KEEP | MeshCom-Reflector |
-| MeshCom-Server (...) | <-- KEEP | MeshCom-Reflector |
+|  | <-- KEEP |  |
