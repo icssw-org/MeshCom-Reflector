@@ -11,7 +11,14 @@ The MeshCom reflector exchanges messages and information between the individual 
 | MeshCom-Server (HB) | <---------> | | -----> | LOGs |
 | MeshCom-Server (more) | <---------> | | | |
 
-| Servers | Protokoll | Reflectors |
+### HEARD-BEAT
+| Source | Protokoll | Destination |
 | ----- | ----- | ----- |
 | MeshCom-Server (...) | --> KEEP | MeshCom-Reflector |
-|  | <-- KEEP |  |
+| MeshCom-Reflector | <-- BEAT | MeshCom-Server |
+
+### DATA
+| Source | Protokoll | Destination |
+| ----- | ----- | ----- |
+| MeshCom-Reflector | <-- DATA | MeshCom-Server |
+| MeshCom-Server (...) | --> GATE | MeshCom-Reflector |
