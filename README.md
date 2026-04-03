@@ -20,5 +20,5 @@ The MeshCom reflector exchanges messages and information between the individual 
 ### DATA
 | Source | Protokoll | Destination |
 | ----- | ----- | ----- |
-| MeshCom-Reflector | <-- DATA | MeshCom-Server |
+| MeshCom-Reflector | --> DATA | MeshCom-Server |
 | MeshCom-Server (...) | --> GATE | MeshCom-Reflector |
