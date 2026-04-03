@@ -1,6 +1,6 @@
 # CONNECTIONS
 ## KEEP
-The KEEP message initiates the connection of a gateway to the MshCom reflector.
+The KEEP message initiates the connection of a Node gateway to the MeshCom server.
 
 ### Construction
 
