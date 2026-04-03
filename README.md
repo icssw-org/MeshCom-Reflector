@@ -12,6 +12,7 @@ The MeshCom reflector exchanges messages and information between the individual 
 | MeshCom-Server (more) | <---------> | | | |
 
 ## MeshCom Gateway Network
+The MeshCom gateways connect to a MeshCom Server and send KEEP alive messages and check returned BEAT messages to check the MeshCom Server is alive and UDP-Mesaaging is working.
 
 ### HEARD-BEAT
 | Source | Protokoll | Destination |
