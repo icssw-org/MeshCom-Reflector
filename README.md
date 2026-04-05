@@ -12,16 +12,32 @@ The MeshCom reflector exchanges messages and information between the individual 
 | MeshCom-Server (more) | <---------> | | | |
 
 ## MeshCom Gateway Network
-The MeshCom gateways connect to a MeshCom Server and send KEEP alive messages and check returned BEAT messages to check the MeshCom Server is alive and UDP-Mesaaging is working.
+All MeshCom-Node-Gateways connect to a MeshCom-Server and send KEEP alive messages and check returned BEAT messages to check the MeshCom-Server is alive and UDP-Mesaaging is working.
 
 ### HEARD-BEAT
-| Source | Protokoll | Destination |
-| ----- | ----- | ----- |
-| MeshCom-Gateway | --> KEEP | MeshCom-Server |
-| MeshCom-Gateway | <-- BEAT | MeshCom-Server |
+| Source | Protokoll | Destination | Port |
+| ----- | ----- | ----- | ----- |
+| MeshCom-Gateway | --> KEEP | MeshCom-Server | 1990 |
+| MeshCom-Gateway | <-- BEAT | MeshCom-Server | 1990 |
 
 ### DATA
-| Source | Protokoll | Destination |
-| ----- | ----- | ----- |
-| MeshCom-Gateway | --> DATA | MeshCom-Server |
-| MeshCom-Server (...) | --> GATE | MeshCom-Gateway |
+| Source | Protokoll | Destination | Port |
+| ----- | ----- | ----- | ----- |
+| MeshCom-Gateway | --> DATA | MeshCom-Server | 1990 |
+| MeshCom-Gateway | <-- GATE | MeshCom-Server | 1990 |
+
+## MeshCom Reflector Network
+
+All MeshCom-Servers connect to the MeshCom-Reflector (one or more) and send LOGIN messages and check returned CONNECTED messages  to check the MeshCom-Reflector is alive.
+
+### LOGIN
+| Source | Protokoll | Destination | Port |
+| ----- | ----- | ----- | ----- |
+| MeshCom-Server | --> LOGN | MeshCom-Reflector | 6901 |
+| MeshCom-Server | <-- CONN | MeshCom-Reflector | 6901 |
+
+### CONNECTED
+| Source | Protokoll | Destination | Port |
+| ----- | ----- | ----- | ----- |
+| MeshCom-Server | --> DATA | MeshCom-Refelctor | 6901 |
+| MeshCom-Server | <-- GATE | MeshCom-Reflector | 6901 |
