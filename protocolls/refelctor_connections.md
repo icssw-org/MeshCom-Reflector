@@ -1,10 +1,11 @@
-# CONNECTIONS
-## KEEP
-The KEEP message initiates the connection of a Node gateway to the MeshCom server.
+# Protocolls
 
-### Construction
+## MeshCom-Node <--> MeshCom-Server
 
-#### KEEP
+### KEEP
+
+The KEEP message initiates the connection of a MeshCom-Node-Gateway to the MeshCom-Server.
+
 | Element | type | Format  | Info |
 | -------- | ------- |------- |------- |
 | TYPE| fixed 4 (s) | KEEP | keyword |
@@ -12,9 +13,12 @@ The KEEP message initiates the connection of a Node gateway to the MeshCom serve
 | NODE-Callsign |  fixed 9 (s) | "OE1KBC-12" filup | with blank |
 | FW-VERSION |  fixed 4 (s) | 4.35 | |
 | FW-SUB-VERSION |  fixed 1 (s) | p | |
-| Booked groups |  variable (s) (0x00) | 20;232;262; | separeted by semicolon |
+| Booked groups |  variable (s) (0x00) | 20;232;262; | separeted by semicolon end with hex 0x00 |
 
-#### BEAT
+### BEAT
+
+Answer from MeshCom-Server to MeshCom-Node-Gateway following a KEEP-Message
+
 | Element | type | Format  | Info |
 | -------- | ------- |------- |------- |
 | TYPE| fixed 4 (s) | BEAT | keyword |
@@ -22,7 +26,10 @@ The KEEP message initiates the connection of a Node gateway to the MeshCom serve
 | GATEWAY-Callsign length |  fixed 1 (b) | 0x00-0xFF | length of following GATEWAY-callsign |
 | GATEWAY-Callsign |  variable (s) | "OE1KBC-12" | |
 
-#### DATA
+### DATA
+
+Message transfer from MeshCom-Node-Gateway to MeshCom-Server (POS, TXT, HEY)
+
 | Element | type | Format  | Info |
 | -------- | ------- |------- |------- |
 | TYPE| fixed 4 (s) | BEAT | keyword |
@@ -35,13 +42,38 @@ The KEEP message initiates the connection of a Node gateway to the MeshCom serve
 | PLAYLOAD length |  fixed 1 (b) | 0x00-0xFF | length of following payload-bytes |
 | PLAYLOAD |  variable (b) | 0x00-0xFF | payload-bytes |
 
-#### GATE
+### GATE
+
+Message transfer form MesgCom-Server to MeshCom-Node-Gateway
+
 | Element | type | Format  | Info |
 | -------- | ------- |------- |------- |
 | TYPE| fixed 4 (s) | GATE | keyword |
 | PLAYLOAD |  variable (b) | 0x00-0xFF | payload-bytes |
 
-#### Construction legend
+### MeshCom-Server <--> MeshCom-Reflector
+
+### LOGIN
+
+MeshCom-Server login to MeshCom-Reflector
+
+| Element | type | Format  | Info |
+| -------- | ------- |------- |------- |
+| TYPE| fixed 5 (s) | LOGN | keyword |
+| Server-Callsign |  fixed 9 (s) | "OE1XAR-15" filup | with blank |
+| Login-Hash |  variable (s) (0x00) | #1234567890 0x00 | end with hex 0x00|
+
+### CONN
+
+Answer MeshCom-Reflector to MeshCom-Server following a LOGIN-Message
+
+| Element | type | Format  | Info |
+| -------- | ------- |------- |------- |
+| TYPE| fixed 4 (s) | CONN | keyword |
+| separation| fixed 1 (b) | 0x00 | |
+| Server-Callsign |  fixed 9 (s) | "OE1XAR-15" filup | with blank |
+
+## Construction type legend
 
 | type | length |  Info |
 | -------- | ------- |------- |
